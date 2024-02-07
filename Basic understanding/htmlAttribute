@@ -281,7 +281,8 @@ This is a reference guide for commonly used HTML attributes along with their des
         <option value="Option 1">
         <option value="Option 2">
         <option value="Option 3">
+        <option value="Option 4">
       </datalist>
       ```
 
-
+Each example demonstrates the usage of the respective attribute within HTML elements.
