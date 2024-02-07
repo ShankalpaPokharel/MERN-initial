@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1</title>
+</head>
+<style>
+    /* try to make navigation bar */
+    #unlist li{
+        display: inline-block;
+        margin-right: 5px;   
+    }
+</style>
+
+
+<body>
+    <p>Hello i am paragraph</p>
+    <code>console.log("hello world i am code tag")</code>
+    <del>Hi i am del tag</del>
+    <em>I am emphasize tag</em>
+    <hr> hr tag
+    <br>
+    <kbd>Hi i am kbd tag</kbd>
+    <!-- <progress> -->
+
+    <h1>h1 Default font size is approximately 2em (equivalent to 32 pixels).</h1>
+    <h2>h2 Default font size is approximately 1.5em (equivalent to 24 pixels).</h2>
+    <h3>h3 Default font size is approximately 1.17em (equivalent to 18.72 pixels).</h3>
+    <h4>h4 Default font size is approximately 1em (equivalent to 16 pixels).</h4>
+    <h5>h5 Default font size is approximately 0.83em (equivalent to 13.28 pixels).</h5>
+    <h6>h6 Default font size is approximately 0.67em (equivalent to 10.72 pixels).</h6>
+
+    
+    
+    <!--  -->
+<h3>anchor tag </h3>
+
+    <a href="www.youtube.com">youtube link</a> --> here we can give the Relative URL: Points to a file within the same website (e.g., href="default.htm").
+Link to an element with a specified ID: You can link to a specific section within the same page using an ID (e.g., href="#section2").
+<br><a href="mailto:someone@example.com">Send email</a>
+<br><a href="tel:+4733378901">+47 333 78 901</a>
+<br><a href="#section2">Go to Section 2</a>
+
+<!-- List -->
+<h3>List</h3>
+<h4>Order List</h4>
+<ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ol>
+<ol type="A">
+    <li>Item 1 we have type a, A, I, i</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ol>
+<h4>Unorder List</h4>
+<ul>
+    <li><a href="home.html" id="homeLink">Home</a></li>
+    <li><a href="about.html" id="aboutLink">About</a></li>
+    <li><a href="services.html" id="servicesLink">Services</a></li>
+    <li><a href="contact.html" id="contactLink">Contact</a></li>
+  </ul>
+<h5>Use like nav bar by using display: inline-block;
+    margin-right: 5px;   css properties  </h5>  
+
+<ul style="list-style-type: none;" id="unlist" >
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  
+
+
+
+  <!-- Input tag with form -->
+<h1>Input tag with form</h1>
+<input type="text" placeholder="text input">
+<input type="number" placeholder="number"> 
+<h1>Sample Form</h1>
+    <form id="myForm">
+        <!-- Text input for is referring to id -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+
+        <!-- Password input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+
+        <!-- Checkbox -->
+        <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+        <label for="subscribe">Subscribe to newsletter</label><br>
+        
+        <!-- Radio buttons - to choose one of them use the same name --> 
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+
+        <!-- Number input -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br>
+
+        <!-- Color picker -->
+        <label for="color">Favorite color:</label>
+        <input type="color" id="color" name="color"><br>
+
+        <!-- Date input -->
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate"><br>
+
+        <!-- Email input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <!-- File upload -->
+        <label for="avatar">Upload avatar:</label>
+        <input type="file" id="avatar" name="avatar"><br>
+
+        <!-- Hidden input -->
+        <input type="hidden" name="secret" value="42">
+
+        <!-- Submit button -->
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <!-- Text Area -->
+    <h3>Text Area</h3>
+    <label for="userReview">Your Review:</label>
+    <textarea id="userReview" name="review" rows="4" cols="50" maxlength="100"  placeholder="Share your thoughts..."></textarea>
+    
+<br>
+    <label for="cars">Choose a car:</label>
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+<br>
+<br>
+<br>
+<!-- Concept of table -->
+ 
+<h3>Concept of table</h3>
+<code>
+    &lt;table&gt; defines the table.
+    <br>
+    &lt;tr&gt; defines rows.<br>
+    &lt;th&gt; defines header cells.<br>
+    &lt;td&gt; defines regular cells.<br>
+</code>
+<table>
+
+    <tr> 
+      <th>Company</th>
+      <th>Contact</th>
+      <th>Country</th>
+    </tr>
+    <tr>
+      <td>Alfreds Futterkiste</td>
+      <td>Maria Anders</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <td>Centro comercial Moctezuma</td>
+      <td>Francisco Chang</td>
+      <td>Mexico</td>
+    </tr>
+  </table>
+  
+  <br><br><br>
+
+  <h3>Concept of iframe</h3>
+  <iframe src="https://www.youtube.com/embed/87u1Hmq-dM4" " frameborder="5"></iframe>
+<br>
+  <iframe src="https://shankalpapokharel.com.np/" width="375" height="812"></iframe>
+
+  <!-- <iframe width="654" height="368" src="https://www.youtube.com/embed/87u1Hmq-dM4" title="Plant Disease Detection using CNN Web App Demo  AIPowered Agriculture  By Shankalpa Pokharel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+
+
+
+
+</body>
+<!-- <footer>I am footer tag</footer> -->
+<script>
+document.getElementById('myForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    // Access and log the values - it use id 
+    const username = formData.get('username');
+    const password = formData.get('password');
+    const subscribe = formData.get('subscribe');
+    const gender = formData.get('gender');
+    const age = formData.get('age');
+    const color = formData.get('color');
+    const birthdate = formData.get('birthdate');
+    const email = formData.get('email');
+    const avatar = formData.get('avatar');
+    const secret = formData.get('secret');
+
+    console.log('Username:', username);
+    console.log('Password:', password);
+    console.log('Subscribe:', subscribe);
+    console.log('Gender:', gender);
+    console.log('Age:', age);
+    console.log('Favorite color:', color);
+    console.log('Birthdate:', birthdate);
+    console.log('Email:', email);
+    console.log('Avatar:', avatar);
+    console.log('Secret value:', secret);
+    // console.log('whole form data:', formData)
+});
+</script>
+</html>
