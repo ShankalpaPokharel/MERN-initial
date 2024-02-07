@@ -1,0 +1,287 @@
+# HTML Attributes Reference
+
+This is a reference guide for commonly used HTML attributes along with their descriptions and example usage.
+
+## Basic Attributes
+
+1. **id**:
+   - Uniquely identifies an element, useful for targeting with CSS or JavaScript.
+   - Example:
+     ```html
+     <div id="uniqueId">This is a div with unique ID</div>
+     ```
+
+2. **class**:
+   - Assigns one or more CSS classes to an element, for styling or JavaScript purposes.
+   - Example:
+     ```html
+     <div class="box red">Red Box</div>
+     ```
+
+3. **src**:
+   - Specifies the URL of the image, audio, video, or script file to be embedded.
+   - Example:
+     ```html
+     <img src="image.jpg" alt="Image">
+     ```
+
+4. **href**:
+   - Specifies the URL of the page the link goes to.
+   - Example:
+     ```html
+     <a href="https://www.example.com">Visit Example</a>
+     ```
+
+5. **alt**:
+   - Provides alternative text for images, displayed when the image cannot be loaded or for accessibility.
+   - Example:
+     ```html
+     <img src="image.jpg" alt="Description">
+     ```
+
+## Visual Attributes
+
+6. **style**:
+   - Defines inline CSS styles for an element.
+   - Example:
+     ```html
+     <div style="color: blue; font-size: 18px;">Styled Text</div>
+     ```
+
+7. **title**:
+   - Provides additional information about an element, often displayed as a tooltip.
+   - Example:
+     ```html
+     <span title="This is additional information">Hover over me</span>
+     ```
+
+8. **target**:
+   - Specifies where to open the linked document.
+   - Example:
+     ```html
+     <a href="https://www.example.com" target="_blank">Open in new tab</a>
+     ```
+
+9. **rel**:
+   - Specifies the relationship between the current document and the linked document.
+   - Example:
+     ```html
+     <a href="stylesheet.css" rel="stylesheet">External Stylesheet</a>
+     ```
+
+10. **type**:
+    - Specifies the media type of the linked document.
+    - Example:
+      ```html
+      <link href="stylesheet.css" type="text/css" rel="stylesheet">
+      ```
+
+## Form Attributes
+
+11. **value**:
+    - Specifies the value of an input element.
+    - Example:
+      ```html
+      <input type="text" value="Default Value">
+      ```
+
+12. **name**:
+    - Specifies the name of an element, used when submitting form data.
+    - Example:
+      ```html
+      <input type="text" name="username">
+      ```
+
+13. **disabled**:
+    - Disables an input element or a group of elements.
+    - Example:
+      ```html
+      <button disabled>Disabled Button</button>
+      ```
+
+14. **checked**:
+    - Specifies whether a checkbox or radio button should be checked by default.
+    - Example:
+      ```html
+      <input type="checkbox" checked>
+      ```
+
+15. **placeholder**:
+    - Provides a hint or example text for input fields.
+    - Example:
+      ```html
+      <input type="text" placeholder="Enter your email">
+      ```
+
+## Additional Attributes
+
+16. **srcset**:
+    - Specifies multiple versions of an image for different display resolutions.
+    - Example:
+      ```html
+      <img srcset="image-320.jpg 320w, image-480.jpg 480w, image-800.jpg 800w" sizes="(max-width: 600px) 480px, 800px" src="image.jpg" alt="Responsive Image">
+      ```
+
+17. **download**:
+    - Specifies that the target will be downloaded when a user clicks on the hyperlink.
+    - Example:
+      ```html
+      <a href="file.pdf" download>Download PDF</a>
+      ```
+
+18. **required**:
+    - Specifies that an input field must be filled out before submitting the form.
+    - Example:
+      ```html
+      <input type="text" required>
+      ```
+
+19. **colspan**:
+    - Specifies the number of columns a cell should span in a table.
+    - Example:
+      ```html
+      <td colspan="2">Spanning two columns</td>
+      ```
+
+20. **rowspan**:
+    - Specifies the number of rows a cell should span in a table.
+    - Example:
+      ```html
+      <td rowspan="2">Spanning two rows</td>
+      ```
+
+## Accessibility Attributes
+
+21. **lang**:
+    - Specifies the language of the element's content for internationalization.
+    - Example:
+      ```html
+      <p lang="en">English text</p>
+      ```
+
+22. **max**:
+    - Specifies the maximum value for an input field.
+    - Example:
+      ```html
+      <input type="number" max="100">
+      ```
+
+23. **min**:
+    - Specifies the minimum value for an input field.
+    - Example:
+      ```html
+      <input type="number" min="0">
+      ```
+
+24. **step**:
+    - Specifies the increment or decrement for an input field.
+    - Example:
+      ```html
+      <input type="number" step="0.5">
+      ```
+
+25. **selected**:
+    - Specifies that an option in a dropdown menu should be pre-selected when the page loads.
+    - Example:
+      ```html
+      <select>
+        <option value="1">Option 1</option>
+        <option value="2" selected>Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+      ```
+
+26. **readonly**:
+    - Specifies that an input field is read-only and cannot be modified.
+    - Example:
+      ```html
+      <input type="text" value="Read-only text" readonly>
+      ```
+
+27. **autofocus**:
+    - Specifies that an input field should automatically get focus when the page loads.
+    - Example:
+      ```html
+      <input type="text" autofocus>
+      ```
+
+28. **hidden**:
+    - Specifies that an element is not yet, or is no longer, relevant.
+    - Example:
+      ```html
+      <div hidden>This content is hidden</div>
+      ```
+
+29. **for**:
+    - Specifies which form element a label is bound to.
+    - Example:
+      ```html
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+      ```
+
+30. **defer**:
+    - Specifies that the script execution should be deferred until after the document is parsed.
+    - Example:
+      ```html
+      <script src="script.js" defer></script>
+      ```
+
+## Extra Attributes
+
+31. **aria-label**:
+    - Provides an accessible label for elements that do not have visible text content.
+    - Example:
+      ```html
+      <button aria-label="Close">X</button>
+      ```
+
+32. **dir**:
+    - Specifies the direction of text within an element, such as left-to-right (`"ltr"`) or right-to-left (`"rtl"`).
+    - Example:
+      ```html
+      <div dir="rtl">مرحبا بالعالم</div>
+      ```
+
+33. **tabindex**:
+    - Specifies the order in which elements receive focus when navigating using the keyboard.
+    - Example:
+      ```html
+      <input type="text" tabindex="1">
+      <input type="text" tabindex="2">
+      ```
+
+34. **autocomplete**:
+    - Specifies whether form autofill should be enabled or disabled for an input field.
+    - Example:
+      ```html
+      <input type="text" autocomplete="off">
+      ```
+
+35. **role**:
+    - Specifies the semantic role of an element for accessibility purposes.
+    - Example:
+      ```html
+      <div role="button" onclick="alert('Button clicked')">Click me</div>
+      ```
+
+36. **data-**:
+    - Allows you to store custom data attributes on an element.
+    - Example:
+      ```html
+      <div data-custom="value">Custom data attribute</div>
+      ```
+
+37. **list**:
+    - Associates an input field with a datalist element to provide autocompletion suggestions.
+    - Example:
+      ```html
+      <input type="text" list="options">
+      <datalist id="options">
+        <option value="Option 1">
+        <option value="Option 2">
+        <option value="Option 3">
+      </datalist>
+      ```
+
+
