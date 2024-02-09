@@ -54,6 +54,7 @@ This is a reference guide for commonly used HTML attributes along with their des
      ```html
      <span title="This is additional information">Hover over me</span>
      ```
+it didn't work in my case
 
 8. **target**:
    - Specifies where to open the linked document.

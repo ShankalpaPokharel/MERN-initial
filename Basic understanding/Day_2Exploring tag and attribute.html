@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>src tag used to embedded resources in to courrent html</p>
+    <p>href used establish relationship between current element or other doucment(external resouces)</p>
+    <br><br>
+    <p>here href used in a tag to direct to youtube page and src used to embedded the imge. and another important thing
+        is if you want to open exteranal resouse in anthere tab can use target="_blank" attribute</p>
+    <a href="https://www.youtube.com/" target="_blank"><img
+            src="https://www.wallpapers13.com/wp-content/uploads/2015/12/Nature-Lake-Bled.-Desktop-background-image.jpg"
+            alt="" width="150px"> </a>
+    <br><br>
+
+    <p>'colspan' used for how many subcolumn can be in min column</p>
+    <p>'rowspan' used for how many subrow can be in min column</p>
+
+    <table>
+        <tr>
+            <th colspan="2">Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>57</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>Jill</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Phone</th>
+        </tr>
+        <tr>
+            <td>555-8745</td>
+        </tr>
+    </table>
+
+    <p>user can only read the content of input field</p>
+    <input type="text" value="Read-only" readonly>
+    <div hidden>This content is hidden</div>
+    <p>autofocus input field</p>
+    <input type="text" autofocus>
+
+    <br><br><br>
+    <strong>'for' attribute in html</strong> <br>
+
+    <label for="fn">First name</label>
+    <input type="text" id="fn" name="fn">
+    <label for="ln">Last name</label>
+    <input type="text" id="ln" name="ln">
+
+    <ul>
+        <li>Item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <p>The action attribute specifies where the form data should be sent when the user submits the form.
+        When you submit the form, the browser navigates to the URL specified in the action attribute.
+        If you use action="#", it means the form will stay on the same page (suffixing the current URL with #).
+        This is often used when you want to process form data on the same page without navigating away.</p>
+
+        <p>using select</p>
+        <label for="langu">Choose from these</label>
+        <select name="langu" id="langu">
+            <option value="nepali">Nepali</option>
+            <option value="Hindi">Hindi</option>
+            <option value="English">English</option>
+        </select>
+
+        <p>using datalist</p>
+
+        <label for="dalists">choose language</label>
+        <input list="dalist" id="dalists">
+        <datalist id="dalist">
+                <option value="Nepali">
+                <option value="hindi">
+                <option value="english">
+                <option value="korian">
+        </datalist>
+        
+       
+        <p>Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
+
+
+
+
+</body>
+
+</html>
