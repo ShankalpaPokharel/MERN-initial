@@ -9,3 +9,8 @@ git push -u origin main
 git add .
 git commit -m "first commit"
 git push -u origin main
+
+
+git add .
+git commit -m "day 3"
+git push -u origin main

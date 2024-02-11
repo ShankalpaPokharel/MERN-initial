@@ -1,0 +1,46 @@
+h1{
+   font-size: inherit; 
+   color:red;
+   background-color: blue;
+   border:10px solid yellow;
+   border-radius: 12px;
+}
+
+.test1{
+    background-color: yellow;
+    margin:50px;
+    padding:50px;
+    font:100;
+    
+}
+img{
+    height: 60px;
+    border-radius: 50px;
+}
+li{
+    list-style-type: none;
+    
+
+}
+ul{
+    display:inline-flex;
+}
+
+table,th,td{
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table{
+    width: 50%;
+}
+td{
+    padding: 10px;
+}
+th{
+    height: 50px;
+}
+tr:nth-child(even) {
+    background-color: gray;
+}
