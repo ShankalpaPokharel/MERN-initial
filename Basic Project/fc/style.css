@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Nav Bar */
+.nav{
+    background-color: gray;
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position:fixed
+
+}
+
+.items{
+    height: 40px;
+    width: 40px;
+    background-color: green;
+    margin-right: 20px;
+}
+.left-side{
+    flex: 0.23;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-start;
+}
+
+.middle-side{
+    flex: 0.53;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+}
+
+.right-side{
+    flex: 0.23;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items:center;
+}
+
+.item{
+    margin-right: 20px;
+}
+
+.mid-item{
+    margin: auto;
+    color: white;
+}
+
+.mid-item:hover{
+    color: blue;
+}
+
+.right-item{
+    color: white;
+    margin: auto;
+}
+
+.test {
+    position: relative;
+    font-size: 2rem; /* Adjust as needed */
+}
+
+.circ::before {
+    content: "";
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    background-color: rgb(152, 18, 18);
+    border-radius: 50%;
+    z-index: 1; /* Place the circle behind the icon */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/* icon */
+.fa-facebook{
+    color: blue;
+}
+
+input{
+    height: 36px;
+    border-radius: 25px;
+    border: none;
+    color: white;
+
+}
+
+
+
+/* Left side bar */
+
+.sb-item{
+    margin-right: 15px;
+}
+.left-s-b{
+    background-color: rgb(110, 188, 162);
+   
+    width: 23vw;
+    height: 80vw;
+    flex: 0.23;
+    
+    /* align-items: center; */
+    overflow: hidden;
+    padding: 10px;
+}
+
+.left-sb-item{
+    /* padding-top: 60px; */
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    /* display: block; */
+    
+}
+
+.with-icon{
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    
+}
+.sb-text{
+    color: white;
+    margin-left: 10px;
+}
+
+.blue{
+    color: rgb(8, 101, 195);
+}
+
+.with-icon i{
+    font-size: 32px;
+    width: 32px;
+}
+
+
+/* middle part */
+.middle-part{
+    display: flex;
+    flex: 0.53;
+    width: 53vw;
+    /* flex-direction: ; */
+}
+.story-box{
+    display: flex;
+    flex-direction: row;
+}
+
+.body-part{
+    display: flex;
+    padding-top: 60px;
+}
+
+
+/* story post */
+
+.story-box{
+    padding-top: 20px;
+    height: 250px;
+}
+.story-post{
+    border: 1px solid black;
+    height: 200px;
+    border-radius: 15px;
+    margin-left: 10px;
+    padding: 5px;
+}
+.story-post img{
+    width: 160px;
+    height: 170px;
+}
+/* 
+.story-uname{
+    display: flex;
+    position: absolute;
+    top: 8px;
+    right:8px;
+} */
+.story-uname {
+    position: relative;
+    color: blue;
+    padding: 0px;
+    font-size: 14px;
+}
+
+
+
+
+
+/* pseudo-element */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+ul {
+    padding: inherit;
+}
+
+.f_logo {
+    color: blue;
+}
+
+input {
+    height: 25px;
+    border-radius: 25px;
+
+}
+
+.t-m-icon {
+    color: gray;
+}
+
+.t-m-icon:hover {
+    color: blue;
+}
+
+.t-icon:hover {
+    color: blue;
+   
+}
+
+.draw-circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    display: flex;
+}
+
+.nav-bar-hor li{
+    display: inline-block;
+    justify-content: space-between;
+    
+}
+ul{
+    display: inline-block;
+    margin: 0px;
+}
+
+.nav-h{
+    height: 54px;
+    background-color: aqua;
+}
+
+.nav-bar-hor{
+    padding: 3px;
+}
+.t-l-nav{
+    display: inline block;
+}
+.t-l-nav{
+    float:left;
+}
+
+.t-m-nav{
+    float: right;
+    text-align: right;
+    align-items: left;
+} */
