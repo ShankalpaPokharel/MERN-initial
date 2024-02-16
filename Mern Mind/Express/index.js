@@ -1,45 +1,81 @@
-const express = require('express')
-/*
-express package --> express() function --> get (have object(funciton))
-
-*/
-
+const express= require("express")
 const app = express()
 
-app.listen(3000,()=>{
-    console.log("server started")
-})
+let todos = ["html","css"]
+let loggedIn = true;
 
+const checkAuthentication = require("./middleware/auth_mid")
 
+/*
+ middleware
+    -siply a function which has access to req and res
+    - next - points to the next upcomming valid middleware(function)
+*/
+// function checkAuthentication(req,res,next){
+//     console.log("checkAuthentication")
+//     // res.status(401).send()
+//     if(!loggedIn){
+//         return res.status(401).send()
+//     }
+//     next()
+// }
 
-app.get('/',(req,res)=>{
-    res.send("hello world")
-})
-//req - request from browser
-//res - response to frontend
-//order will matter so req than res
-app.get('/api/todos',(req,res)=>{
-    console.log("send todos")
-    let todos = ["html","css","js"]
-    res.send(todos)
-}) 
-const funtest =(req,res) =>{
-    console.log("custom function working")
-    res.send("Custom funtion wroking ..")
+function checkValidRole(req,res,next){
+    let hasValidRole = true
+    if(!hasValidRole){
+        return res.status(403).send()
+    }
+    next()
 }
-app.get('/ftest',funtest)
 
 
 
-app.post('/api/todos',(req,res)=>{
-    // console.log(req)
-    res.send("Post request is working")
+app.use(checkAuthentication)  //global middle-ware
+app.use(checkValidRole)
+
+app.get("/api/todos",(req,res)=>{
+    console.log("response list of todos")
+    res.send(todos)
+})
+app.post("/api/todos",(req,res)=>{
+    if (loggedIn){
+        todos.push("git")
+    console.log("response list of todos")
+    return res.send(todos)
+    }
+    //to remove the error we could add else condition but best prictice is add the return in if 
+    res.status(401).send({
+        message:"unauthorized."
+    })
+
+})
+app.delete("/api/todos/reset",(req,res)=>{
+    if (loggedIn){
+        todos =[]
+    console.log("todo reseted")
+    // return res.status(204).send()
+    return res.status(204).send(todos)
+    }
+    //to remove the error we could add else condition but best prictice is add the return in if 
+    res.status(401).send({
+        message:"unauthorized."
+    })
+
+})
+
+app.listen(8000, ()=>{
+    console.log("Server started..");
+
 })
 
 
-
-
-
-
-
-
+/* 
+status code
+2**  : successfull 204- no content
+3**: redirect 
+4** : error of client
+ 400-bad request
+ 401 - unauthorized // not logged in
+ ,403
+ 404-page not found /resourse not found
+*/
