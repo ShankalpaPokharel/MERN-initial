@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #F4F2EE;
+}
+
+
+.nav-img{
+    border-radius: 50%;
+    height: 16px;
+
+}
+
+/* Navbar  */
+.navbar{
+    display: flex;
+    width: 100%;
+    height: 56px;
+    background-color: white;
+   
+}
+
+
+
+/* Navbar left  */
+.nav-left{
+    display: flex;
+    align-items: center;
+    flex:0.33;
+    margin-left: 60px;
+}
+.search-box{
+    margin-left: 10px;
+    padding-left: 10px;
+    display: flex;
+    background-color: rgb(210, 213, 224);
+    height: 32px;
+    /* align-items: center; */
+    border-radius: 5px;
+    width: 80%;
+    align-items: center;
+    
+}
+
+
+/* Navbar Right  */
+.nav-right{
+display: flex;
+flex: 0.66;
+justify-content:flex-end;
+margin-right: 60px;
+align-items: center;
+
+}
+
+.nav-right-item{
+   
+    width: 75px;
+    margin-left: 0px;
+    cursor: pointer;
+    
+}
+
+.nav-right-item i{
+    display: flex;
+    justify-content: center;
+}
+.me-drop{
+    display: flex;
+   
+   
+}
+.nav-profile{
+    width: 50px;
+    
+}
+
+.nav-text{
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+    /* justify-content: cent; */
+}
+.vl {
+    border-left: 1px solid rgb(135, 135, 135);
+    height: 40px;
+    margin-right: 5px;
+  }
+
+  a{
+    color: rgb(136, 143, 4);
+    font-size: 11px;
+  }
+
+  .try-premium a p{
+    display:flex;
+    justify-content: center;
+  }
+input{
+    background-color: transparent;
+    padding-left: 10px;
+    height: 20px;
+    border: none;
+    outline-width: 0;
+    
+}
+
+.nav-right-item:active {
+    border-bottom: 2px solid black;
+    /* You can adjust the border width and color as needed */
+}

@@ -79,3 +79,24 @@ status code
  ,403
  404-page not found /resourse not found
 */
+
+
+let todo = [{id:1, name: "html"}, {id:2, name: "css"}];
+let datas = [];
+
+// for (let i = 0; i < todo.length; i++) {
+//     datas.push(todo[i].name);
+//     console.log(todo[i].name);
+// }
+
+let inputTitle = 'html'
+
+// if(datas.includes(inputTitle)){
+//     return res.status(400).send({
+//         error:[{key:"title",
+//         msg:"this filed is already exist"}]})
+//     console.log("this is already exist")
+// }
+
+console.log(todo.some(el => el.name ==inputTitle))
+
