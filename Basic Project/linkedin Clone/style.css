@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+   
 }
 body{
     background-color: #F4F2EE;
@@ -19,7 +20,9 @@ body{
     width: 100%;
     height: 56px;
     background-color: white;
-   
+   grid-area: header;
+   position:fixed;
+   top: 0;
 }
 
 
@@ -111,3 +114,50 @@ input{
     border-bottom: 2px solid black;
     /* You can adjust the border width and color as needed */
 }
+
+
+/* left bar start */
+
+.grid-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1.3fr 3.5fr 1.5fr;
+    margin: 20px 50px;
+    
+  }
+  
+
+
+  .grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    margin-top: 36px;
+    background-color: aqua;
+  }
+
+.left-bar p{
+    font-size: 14px;
+}
+.box1{
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.box2{
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 10px;
+}
+
+
+
+.post-content{
+    border-radius: 15px;
+    background-color: white;
+}
+
+
+
+
+/* grid refrences : https://www.youtube.com/watch?v=KOvGeFUHAC0&ab_channel=MozillaDeveloper */
