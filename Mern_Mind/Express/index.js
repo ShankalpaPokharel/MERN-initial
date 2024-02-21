@@ -1,4 +1,6 @@
+
 const express= require("express")
+
 const app = express()
 
 let todos = ["html","css"]
@@ -99,4 +101,15 @@ let inputTitle = 'html'
 // }
 
 console.log(todo.some(el => el.name ==inputTitle))
+
+
+
+// Using Node.js `require()`
+const mongoose = require('mongoose');
+
+// Using ES6 imports
+// import mongoose from 'mongoose';
+
+// mongoose.connect('mongodb://127.0.0.1:27017/test')
+//   .then(() => console.log('Connected!'));
 

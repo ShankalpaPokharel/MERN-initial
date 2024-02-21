@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "nothing much"
+git commit -m "amazon clone and mongdo query explore"
 git push -u origin main
