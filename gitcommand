@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "amazon clone and mongdo query explore"
+git commit -m "express with db"
 git push -u origin main
