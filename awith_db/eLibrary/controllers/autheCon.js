@@ -21,25 +21,3 @@ exports.signUp=async(req,res,next)=>{
         next(error);
     }
 }
-
-exports.login = async(req,res,next)=>{
-    try{
-        const {email,password}=req.body;
-        // console.log(email,password)
-        const userdata = await User.findOne({email:email})
-        const hash = userdata.password
-        // console.log(hash)
-        bcrypt.compare(password, hash, async function(err, result) {
-            if(err){
-                return res.status(400).json({message:"hash problem"})
-            }
-            if (!result){
-                return res.status(400).json({message:"password didn't match"})
-            }
-            return res.status(200).json({message:"successfully logged in"})
-        });
-    }
-    catch(err){
-        next(err)
-    }
-}
