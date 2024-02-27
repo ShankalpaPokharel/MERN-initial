@@ -43,3 +43,5 @@ exports.login = async(req,res,next)=>{
         next(err)
     }
 }
+
+// add email varification or not 
