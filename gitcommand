@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "youtube Clone"
+git commit -m "University Website"
 git push -u origin main

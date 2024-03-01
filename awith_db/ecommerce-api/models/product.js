@@ -1,9 +1,12 @@
 const mongoose = require("mongoose")
 
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
+
 const ProductSchma = new mongoose.Schema({
-    title:{type:String,require:true},
-    price:{type:String,require:true},
-    createdBy:{type:String,require:true}
+    title:{type:String,required:true},
+    price:{type:String,default:0},
+    createdBy:{type:ObjectId,ref:"User", required:true}
 })
 
 
