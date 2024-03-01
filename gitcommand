@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "University Website"
+git commit -m "some css and basic project screen shot"
 git push -u origin main
