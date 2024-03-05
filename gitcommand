@@ -7,7 +7,7 @@ git push -u origin main
 
 
 git add .
-git commit -m "joi authentication try"
+git commit -m "check autorization seller or buyer"
 git push -u origin main
 
 
