@@ -20,3 +20,10 @@ exports.checkAuthentication = (req,res,next)=>{
     });    
 }
 
+exports.checkAuthorization = (req,res,next)=>{
+   
+    if(req.user.role=="seller"){
+        return next()
+    }
+    return res.status(403).send("Unauthorize access")
+}
