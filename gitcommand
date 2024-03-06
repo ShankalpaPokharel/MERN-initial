@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "some css and basic project screen shot"
+git commit -m "update and delete product"
 git push -u origin main
