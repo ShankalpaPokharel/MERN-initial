@@ -4,6 +4,9 @@ const User = require('../models/User')
 const Joi = require('joi')
 const handleServerError = require('../middleware/handleServerError')
 
+const {joiValidationUtils} = require("../utils/validationUtils")
+
+
 const productSchema = Joi.object({
     title: Joi.string().max(30).required(),
     price:Joi.number().min(0).max(1000000),
@@ -27,21 +30,24 @@ exports.storeProduct = async(req,res,next)=>{
     try{
         const value = await productSchema.validateAsync(req.body,{abortEarly:false})
     }catch(err){
-    //    return res.send(err)
-        return res.send({
-            message:"Validation Error",
-            error:err.details.map(er =>{
-                return {field:er.context.key,
-                        message:er.message}
-            })
-        })
+        // res.send(err)
+        return joiValidationUtils(res,err)
+    
     }
+
+    let rootpath = path.resolve();
+    let storageDir = path.join(rootpath,"uploads")
+    req.files.image.mv(path.join(storageDir,req.files.image.name))
+
+
+
 
     try{
         const product = await Products.create({...req.body,createdBy:req.user._id})
         return res.status(200).send(product)
     }
     catch(error){
+        console.log("insert catch")
         next(error)
     }
 }
@@ -53,7 +59,7 @@ exports.updateProduct = async(req,res,next)=>{
         const value=await productSchema.validateAsync(req.body,{abortEarly:false})
     }catch(err){
         console.log("entered in update product joi validation catch")
-        next(err)
+        joiValidationUtils(res,err)
     }
     
    
