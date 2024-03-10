@@ -1,6 +1,8 @@
 const Products = require('../models/product')
 const User = require('../models/User')
 
+const path = require("path")
+
 const Joi = require('joi')
 const handleServerError = require('../middleware/handleServerError')
 
@@ -35,15 +37,41 @@ exports.storeProduct = async(req,res,next)=>{
     
     }
 
-    let rootpath = path.resolve();
-    let storageDir = path.join(rootpath,"uploads")
-    req.files.image.mv(path.join(storageDir,req.files.image.name))
+    // let rootpath = path.resolve();
+    // let storageDir = path.join(rootpath,"uploads")
+    // req.files.image.mv(path.join(storageDir,req.files.image.name))
 
+    // console.log(req.files.image);
+    // console.log(req.body.title);
+    // console.log(req.body.price);
+    // console.log(req.files.image.mimetype);
+    // console.log(req.files.image.size);
+
+    // let rootpath = path.resolve()
+    // let filename = Date.now()+Math.random().toString(36).substring(2,10)
+    // let imagepath = path.join("uploads",`${filename+req.files.image.name}`) 
+    // console.log(imagepath)
+    // console.log("-----------")
+    // let ab = req.files.image.mv(path.join(rootpath,imagepath))
+    // console.log(ab)
+
+    
 
 
 
     try{
-        const product = await Products.create({...req.body,createdBy:req.user._id})
+        let imagePath = "no image";
+        console.log(1)
+        if(req.files.image) {
+            let rootPath = path.resolve()
+            let fileName = Date.now()+Math.random().toString(36).substring(2,10);
+            imagePath = path.join("uploads",`${fileName}-${req.files.image.name}`)
+            console.log(imagePath)
+            req.files.image.mv(path.join(rootPath,imagePath))
+        }
+        console.log(2)
+        const product = await Products.create({...req.body,createdBy:req.user._id,image:imagePath})
+        console.log(3)
         return res.status(200).send(product)
     }
     catch(error){

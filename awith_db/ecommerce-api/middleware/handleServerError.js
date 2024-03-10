@@ -1,19 +1,8 @@
-exports.handleServerError = (err, req, res, next) => {
-    console.log("enter handle server error")
-    let statusCode = 500;
-    let message = "Server Error";
-    let error = err;
-
+exports.handleServerError = (error, req, res, next) => {
     
-    return res.status(statusCode).send(Object.entries(error.errors).map(([field, error]) => ({
-        field,
-        message: error.message
-    })))
-    
-}
+        return res.send(error.stack)
+};
 
-
-
-exports.pageNotFound = (req,res,next)=>{
-    res.status(404).send({message:"page not found"})
-}
+exports.pageNotFound = (req, res, next) => {
+    res.status(404).send({ message: "page not found" });
+};
