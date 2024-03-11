@@ -10,6 +10,7 @@ const authRoute = require('./routes/auth')
 const {handleServerError,pageNotFound} = require("./middleware/handleServerError")
 
 app.use(fileUpload())
+// server static file or resources
 app.use('/uploads',express.static('uploads'))
 
 app.use(express.json())
@@ -23,13 +24,6 @@ app.use(pageNotFound)
 app.listen(8888,()=>{
     console.log("server started.")
 })
-
-
-
-
-
-
-
 
 
 
