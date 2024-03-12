@@ -1,5 +1,5 @@
 exports.handleServerError = (error, req, res, next) => {
-    
+    console.log("handle server error")
         return res.send(error.stack)
 };
 

@@ -12,4 +12,3 @@ const product = await Products.find({
     })
 ```
 
-ada

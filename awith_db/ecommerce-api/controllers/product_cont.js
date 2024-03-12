@@ -28,36 +28,41 @@ exports.fetchProduct = async(req,res,next)=>{
     res.status(200).json(product)
 }
 
+
+
+
+
+
+const { uploadOnCloudinary } = require('../utils/cloudinary');
 // insert new product
 exports.storeProduct = async(req,res,next)=>{
+    console.log(path.join(path.resolve() , "uploads",req.file.filename))
 
-    try{
-        const value = await productSchema.validateAsync(req.body,{abortEarly:false})
-    }catch(err){
-        // res.send(err)
-        return joiValidationUtils(res,err)
-    
-    }
+    const imageUrlResponse = await uploadOnCloudinary(path.join(path.resolve() , "uploads",req.file.filename));
+    console.log(imageUrlResponse)
 
-    try{
-        let imagePath = null;
-        console.log(1)
-        if(req.files?.image) {
-            let rootPath = path.resolve()
-            let fileName = Date.now()+Math.random().toString(36).substring(2,10);
-            imagePath = path.join('/',"uploads",`${fileName}-${req.files.image.name}`)
-            console.log(imagePath)
-            req.files.image.mv(path.join(rootPath,imagePath))
-        }
-        console.log(2)
-        const product = await Products.create({...req.body,createdBy:req.user._id,image:imagePath})
-        console.log(3)
-        return res.status(200).send(product)
-    }
-    catch(error){
-        console.log("insert catch")
-        next(error)
-    }
+    res.send('File uploaded successfully');
+
+
+    // try{
+    //     let imagePath = null;
+    //     console.log(1)
+    //     if(req.files?.image) {
+    //         let rootPath = path.resolve()
+    //         let fileName = Date.now()+Math.random().toString(36).substring(2,10);
+    //         imagePath = path.join('/',"uploads",`${fileName}-${req.files.image.name}`)
+    //         console.log(imagePath)
+    //         req.files.image.mv(path.join(rootPath,imagePath))
+    //     }
+    //     console.log(2)
+    //     const product = await Products.create({...req.body,createdBy:req.user._id,image:imagePath})
+    //     console.log(3)
+    //     return res.status(200).send(product)
+    // }
+    // catch(error){
+    //     console.log("insert catch")
+    //     next(error)
+    // }
 }
 
 
