@@ -20,9 +20,16 @@ exports.checkAuthentication = (req,res,next)=>{
     });    
 }
 
-exports.checkAuthorization = (req,res,next)=>{
+exports.checkSeller = (req,res,next)=>{
    
     if(req.user.role=="seller"){
+        return next()
+    }
+    return res.status(403).send("Unauthorize access")
+}
+exports.checkBuyer = (req,res,next)=>{
+   
+    if(req.user.role=="buyer"){
         return next()
     }
     return res.status(403).send("Unauthorize access")

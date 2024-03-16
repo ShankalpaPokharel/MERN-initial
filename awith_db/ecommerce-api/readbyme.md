@@ -12,3 +12,24 @@ const product = await Products.find({
     })
 ```
 
+### multer
+
+### cloudnary
+
+### need to install dot env to use .env file
+
+### to remove file: 
+```
+fs.unlinkSync(localFilePath)
+```
+
+### password hide when fetctching the user data
+```select:flase```
+```
+password: { type: String, required: true,select:false },
+```
+to  use it
+
+```
+let user = await User.findOne({ email: req.body.email }).select('+password');
+```

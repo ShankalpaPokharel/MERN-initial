@@ -38,7 +38,7 @@ exports.signup = async (req, res, next) => {
         });
     }
 
-    let user = await User.findOne({ email: req.body.email });
+    let user = await User.findOne({ email: req.body.email })
     if (user) {
         return res.status(400).send({
             msg: "validation Error",
@@ -97,7 +97,7 @@ exports.login = async(req, res, next) => {
     try {
         let { email, password } = req.body;
 
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ email }).select('+password');
 
         if (user) {
             const comp = await bcrypt.compare(password, user.password);

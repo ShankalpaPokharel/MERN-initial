@@ -26,7 +26,7 @@ const UserSchma = new mongoose.Schema({
             message: "email already used db",
         },
     },
-    password: { type: String, required: true },
+    password: { type: String, required: true,select:false },
     phone: { type: Number },
     role: {
         type: String,
