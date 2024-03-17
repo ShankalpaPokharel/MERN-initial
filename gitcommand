@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "create order"
+git commit -m "react explore:installation,jsx,concept of hook,custom react and dom"
 git push -u origin main
