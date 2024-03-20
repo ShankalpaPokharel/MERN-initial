@@ -913,27 +913,3 @@ export default {
 
 
 
-
-
-
-
-
-state management 
-prop drilling
-
-context API(for react) 
-react Redux
-redux toolkit(RTK)(easier vsion of react redux)
-zustand
-
-```jsx
-// Context/UserContext.js
-import react from 'react'
-const UserContext = React.createContext()
-export default UserContext;
-```
-
-
-context give provider and it provides a varible 
-
-share databetween componets without having pass props manually
