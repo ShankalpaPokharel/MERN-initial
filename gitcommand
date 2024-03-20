@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "context api with dark theme"
+git commit -m "context api note update"
 git push -u origin main

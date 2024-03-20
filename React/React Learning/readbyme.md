@@ -638,6 +638,285 @@ export default User
 -----------------------------------------------------------------------------
 
 ## Context API 
+It provides a way to share data between components  without having pass props manually at every level of the component tree. It is primary used for share state that is ```considered global variable``` or shared across multiple components. While it is possible to create a separate file like global.js to store shared values, this approach is not practical because it does not synchronize well with the component state updates.  If we implement state using useState or any other variable, other parts of the application can update them directly, potentially leading to unexpected behavior and inconsistencies."
+
+![alt text](zimg/contextapi.png)
+
+1. Context : create using ```React.createContext();``` method. This create a Context Object that contians a ```Provider``` and a```Consumer```. 
+
+2. Provider: The ```provider component```  is used to wrap that part of the component where yuo what to the context available. It accept ```value``` prop, which can be any javascript value. This value will be passed down to all consumers within the provider's subtree. 
+
+3.  Consumer : The consumer component is used to access the context value  passed down by a provider. 
+
+
+#### State Management library
+* context API(for react) 
+* react Redux
+* redux toolkit(RTK)(easier vsion of redux)
+* zustand
+
+![alt text](zimg/contextapi2.png)
+
+
+
+![alt text](zimg/ca3.png)
+
+![alt text](<zimg/Screenshot 2024-03-20 at 5.17.48 PM.png>)
+
+Lets do it ....
+make ```context``` folder 
+and make ```UserContext.js```
+
+```jsx
+// context/UserContext.js
+import react from 'react'
+const UserContext = React.createContext()
+export default UserContext;
+```
+
+Context give the provider. we use it as a wrapper. 
+
+```jsx
+<UserContext> //it become a porvider . Any component with in it get the access of UserContext 
+<Login/>
+<Card>
+    <Data/>
+</Card>
+</UserContext>
+```
+
+Lets make a provider
+
+```jsx
+// context/UserContextProvider.jsx
+import React from "react";
+import UserContext from "./UserContext";
+
+const UserContextProvider = ({children}) =>{
+    const [user,setUser] = React.useState()
+    return (
+        <UserContext.Provider value={{user,setUser}}>//value is what {children} can access from it
+        {children}
+        </UserContext.Provider>
+    )
+}
+
+export default UserContextProvider;
+
+// childeren is generic name. whatever props came use it. we can name anyname to children no poblem. It is just for practiece. 
+// name context folder is also standard practice put the folder name
+```
+
+Now Lets use it .....
+
+### ```Where use it```
+
+```jsx
+// App.jsx
+import { useState } from 'react'
+import UserContextProvider from './context/userContextProdiver'
+
+function App() {
+  const [count, setCount] = useState(0)
+  return (
+    <UserContextProvider>
+     <h1>React with Me</h1>
+     <Login/>
+     <Profile/>
+    </UserContextProvider>
+  )
+}
+export default App
+// Here Login and Profile access the value value={{user,setUser}}
+```
+
+### ```How to use it(set)```
+* import ```useContext``` hook and ```UserContext```
+* ``` import UserContext from '../context/UserContext'```
+* ``` const {setUser} = useContext(UserContext)``` take a UserContext in use Context to access or change
+* ```setUser({username,password})```
+
+```jsx
+// src/Components/Login.jsx
+import React,{useState,useContext} from 'react'
+import UserContext from '../context/UserContext'
+
+function Login() {
+    const [username,setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const {setUser} = useContext(UserContext)
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        setUser({username,password})
+    }
+  return (
+    <div>
+        <h2>Login</h2>
+        <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} placeholder='username' />
+        <input type="text" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='password' />
+        <button onClick={handleSubmit}>Submit</button>
+    </div>
+  )
+}
+
+export default Login
+```
+
+### ```How to use it(access)```
+* ```import UserContext from '../context/UserContext'```
+* ```const {user}=useContext(UserContext)```
+* ```<div>Wecome {user.username}</div>```
+
+```jsx
+import React, {useContext} from 'react'
+import UserContext from '../context/UserContext'
+
+function Profile() {
+    const {user}=useContext(UserContext)
+    console.log(user)
+    if(!user) return <div>Please login</div>
+    return <div>Wecome {user.username}</div>
+}
+export default Profile
+```
+
+### Dark Mode using context api
+![alt text](<zimg/Screenshot 2024-03-20 at 5.15.42 PM.png>)
+```jsx 
+// 09themeswitcher/src/contexts/theme.js (do it same in production level)
+import { createContext,useContext } from "react";
+
+export const ThemeContext = createContext({
+    themeMode:"light",
+    darkTheme:()=>{},
+    lighTheme:()=>{},
+}) //we can add default variable , method 
+export const ThemeProvider = ThemeContext.Provider //use for wrapper
+
+// custom hook
+export default function useTheme(){
+    return useContext(ThemeContext)
+}
+```
+
+### ```Where and how to use it as wrapper```
+
+* ```import { ThemeProvider } from "./contexts/theme";```
+* ```<ThemeProvider value={{themeMode,lightTheme,darkTheme}}> <ThemeBtn/><Card/></ThemeProvider>``` give with access of value
+
+```jsx
+if we use same name variable or method of ThemeContext in App.jsx, it automatically implement in in Thememode
+
+const [count, setCount] = useState(0);
+    const [themeMode,setThemeMode] = useState("light")
+    const lightTheme = () =>{
+      setThemeMode("light")
+    }
+    const darkTheme = () =>{
+      setThemeMode("dark")
+    }
+```
+
+```jsx
+// App.jsx
+import { useState,useEffect } from "react";
+import "./App.css";
+import { ThemeProvider } from "./contexts/theme";
+import ThemeBtn from "./components/ThemeBtn";
+import Card from "./components/Card";
+
+function App() {
+    const [count, setCount] = useState(0);
+    const [themeMode,setThemeMode] = useState("light")
+    const lightTheme = () =>{
+      setThemeMode("light")
+    }
+    const darkTheme = () =>{
+      setThemeMode("dark")
+    }
+
+    //actual change in  theme
+    useEffect(() => {
+      document.querySelector('html').classList.remove("light","dark")
+      document.querySelector('html').classList.add(themeMode)
+    }, [themeMode])
+    
+
+    return (
+        <ThemeProvider value={{themeMode,lightTheme,darkTheme}}> 
+            <div className="flex flex-wrap min-h-screen items-center">
+                <div className="w-full">
+                    <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
+                      <ThemeBtn/>
+                    </div>
+
+                    <div className="w-full max-w-sm mx-auto">
+                      <Card/>
+                    </div>
+                </div>
+            </div>
+        </ThemeProvider>
+    );
+}
+
+export default App;
+
+```
+### Toogle button(using useTheme hook of context api)
+```jsx
+import useTheme from "../contexts/theme"; //using useTheme hook of context api
+
+export default function ThemeBtn() {
+    const {themeMode,lightTheme,darkTheme}=useTheme()
+    const onChangeBtn = (e)=>{
+        const darkModeStatus=e.currentTarget.checked
+        if(darkModeStatus) {
+            darkTheme()
+        }else{
+            lightTheme()
+        }
+    }
+    return (
+        <label className="relative inline-flex items-center cursor-pointer">
+            <input
+                type="checkbox"
+                value=""
+                className="sr-only peer"
+                onChange={onChangeBtn}
+                checked={themeMode==="dark"}
+            />
+        </lable>
+        )
+}
+```
+
+
+
+
+Dark Mode tailwind config settings
+```jsx
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode:"class", //imp
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+```
+
+
+
+
+
+
+
 
 state management 
 prop drilling
@@ -656,3 +935,5 @@ export default UserContext;
 
 
 context give provider and it provides a varible 
+
+share databetween componets without having pass props manually
