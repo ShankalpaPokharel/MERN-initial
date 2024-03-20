@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "context api note update"
+git commit -m "todo with context api and localstorage "
 git push -u origin main
