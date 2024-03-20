@@ -351,6 +351,8 @@ It is cause by useState, useState send update in batch all 4 setCounter(counter+
 ![alt text](<zimg/Screenshot 2024-03-18 at 2.32.30 PM.png>)
 ## useCallback
 
+
+
 `const ab = useCallback(function,dependencies) `
 
 ```jsx
@@ -367,6 +369,7 @@ It is used to optimize. It memorize the funtion.
 ## useEffect
 
 when page load frist time it called and if any change in dependency it re-run
+
 
 ```jsx
 useEffect(() => {
@@ -472,6 +475,7 @@ export default useCurrencyInfo;
 </select>
 ```
 ------------------------------------------------
+![alt text](<07reactRouter/Screenshot 2024-03-18 at 11.49.33 PM.png>)
 07
 ## React Router
 React router dom is 3rd party library
@@ -573,7 +577,7 @@ then, base on path react render the element
 Where user click About it hit ```<Route path='about' element={<About/>}/>``` and add the AboutComponet in Outlet
 
 ### loader in route
-```<Route loader={githubInfoLoader} path='github' element={<Github/>}/>``` first call the githubinLoader method and rend Github componet. to use the reture value of method we need to use ```import { useLoaderData } from 'react-router-dom'``` 
+```<Route loader={githubInfoLoader} path='github' element={<Github/>}/>``` first call the githubinLoader method and send Github componet. to use the reture value of method we need to use ```import { useLoaderData } from 'react-router-dom'``` 
 
 ```jsx
 import React from "react";
@@ -631,4 +635,24 @@ function User() {
 export default User
 ```
 
-//router provider is wrapper
+-----------------------------------------------------------------------------
+
+## Context API 
+
+state management 
+prop drilling
+
+context API(for react) 
+react Redux
+redux toolkit(RTK)(easier vsion of react redux)
+zustand
+
+```jsx
+// Context/UserContext.js
+import react from 'react'
+const UserContext = React.createContext()
+export default UserContext;
+```
+
+
+context give provider and it provides a varible 

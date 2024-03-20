@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "tailwindporpos, bgChanger,password generator,currencyDonverotry, reactRouter"
+git commit -m "context api"
 git push -u origin main
