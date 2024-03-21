@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "todo with context api and localstorage "
+git commit -m "redux toolkit"
 git push -u origin main

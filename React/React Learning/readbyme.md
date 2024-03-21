@@ -342,7 +342,7 @@ function App() {
             setCounter(prevCounter => prevCounter+1)
 
         }
-    };
+    };}
 ```
 
 It is cause by useState, useState send update in batch all 4 setCounter(counter+1); be one batch, so it see all similar so execte only one. the is callback in setCounter. `setCounter(prevCounter => prevCounter+1)` prevCounter take last updated state and update it
@@ -910,6 +910,185 @@ export default {
 }
 
 ```
+
+![alt text](<zimg/Screenshot 2024-03-20 at 10.26.25 PM.png>)
+
+-----------------------------------------------------------------------------
+## Redux Toolkit(RTK)
+[Documentation](https://redux-toolkit.js.org/introduction/getting-started)
+Redux :
+    react-redux
+
+like React      React native(mobile)
+                React dom(web)
+need both to use
+
+Redux work all JS app not only in react
+
+Development journey : Flux(devlop by FB) ---> redux (inspire by flux,better version of flux)  ---->redux-toolkit
+
+### Concept 
+* store : sigle source of truth(the state of your whole application is stored in a single object tree within a single store.)
+
+state: current situation or condition of application data at paticular point in time. like value of variable at paticular point of that time
+
+
+
+* reducers : a fuction that dedide how your application's state change in response to action sent to the Redux store. like normal  function which have (state,action) action have data, like normal parameter inside paranthesis. addTodo, removeTodo, editTodo every fuction are reducer which has specific task
+
+* useDispatch : like messenger or mail-man, if we want to change in redux store, use use Dispatch. simply we add reducer in Dispatch. For example, if you want to add todo you would write down "add todo" and send it to the worker responsible for add todo (reducer).
+
+* useSelector : use to access value of store
+
+* Slice : In Redux Toolkit, we have tools like createSlice to help us create these slices more easily. It's like having a template for creating compartments in our big box. This template not only helps us create slices but also generates the workers (reducers) needed to manage the information inside those slices.
+
+### Lets do ... 
+![alt text](<zimg/Screenshot 2024-03-21 at 2.21.49 PM.png>)
+
+* make a Slice ```reduxToolkitTodo/src/features/todo/todoSlice.js```
+```jsx
+import { createSlice,nanoid } from "@reduxjs/toolkit"; //nanoid to create unique id
+
+const initialState = {
+    todos: [{id:1,text:"Hello World"}]
+}
+
+export const todoSlice = createSlice({
+    name:'todo',
+    initialState,
+    reducers:{
+        addTodo: (state,action)=>{
+            const todo = {
+                id:nanoid(),
+                text: action.payload
+            }
+            // state.todos.push(todo) //last index
+            state.todos.unshift(todo) //fist index
+        },
+        removeTodo:(state,action)=>{
+            state.todos = state.todos.filter((todo)=>todo.id !== action.payload)
+        }
+    }
+})
+
+export const {addTodo,removeTodo} = todoSlice.actions //this will import in add AddTodo component use with dispatch
+export default todoSlice.reducer //this will import in store
+
+action :  represents the action object dispatched to the store.
+action.payload: contains the data associated with the action.
+
+```
+
+* create folder and file ```reduxToolkitTodo/src/app/store.js```
+
+```jsx
+import {configureStore} from '@reduxjs/toolkit' //from core redux not react redux
+import todoReducer from '../features/todo/todoSlice'
+
+export const store = configureStore({
+    reducer:todoReducer //introduce reducer
+//     reducer: {
+//     counter: counterReducer,
+//     // Add other reducers here if needed
+//   },
+})
+//this will import and use as a wrapper
+```
+
+* Connecting Redux to your App (```dispatch```)
+```jsx
+import { useState } from 'react'
+import {useDispatch} from 'react-redux' //imp
+import { addTodo} from '../features/todo/todoSlice' //imp
+
+function AddTodo() {
+    const [input, setInput] = useState('')
+    const dispatch = useDispatch() //imp
+
+    const addTodoHandler = (e) =>{
+        e.preventDefault()
+        dispatch(addTodo(input)) //imp
+        setInput('')
+    }
+  return (
+    <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
+      <input
+        type="text"
+        className="bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        placeholder="Enter a Todo..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button
+        type="submit"
+        className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+      >
+        Add Todo
+      </button>
+    </form>
+  )
+}
+export default AddTodo
+```
+
+* Connecting Redux to your App (```useSelector```)
+```jsx
+import { useDispatch, useSelector} from 'react-redux'
+import { removeTodo } from '../features/todo/todoSlice'
+
+function Todo() {
+  const todos = useSelector(state => state.todos) //imp
+  const dispatch = useDispatch()
+    return (
+    <>
+    <div>Todos</div>
+    <ul className="list-none">
+        {todos.map((todo) => (
+          <li
+            className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
+            key={todo.id} //imp
+          >
+            <div className='text-white'>{todo.text}</div> //imp
+            <button
+             onClick={() => dispatch(removeTodo(todo.id))} //imp
+              className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md">
+            </li>
+        ))} 
+    <ul>
+    )}    
+```
+
+* Wrapping Your App with Provider
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { Provider } from 'react-redux'
+import {store} from  './app/store.js' 
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
