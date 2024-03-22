@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "redux toolkit"
+git commit -m "porjct complete error dubugging left"
 git push -u origin main

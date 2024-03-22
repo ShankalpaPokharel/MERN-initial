@@ -1075,6 +1075,47 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ```
 
+-----------------------------------------------------------------------
+
+# Project Start
+
+
+create react app
+install depandencies ``` npm i @reduxjs/toolkit react-redux react-
+router-dom appwrite @tinymce/tinymce-react html-react-parser react-hook-form ```
+
+access value of .env file :
+app made by create react app :
+
+```REACT_APP_APPWRITE_URL = "testenv"```
+```console.log(process.env.REACT_APP_APPWRITE_URL)```
+
+
+app made by [vite](https://vitejs.dev/guide/env-and-mode.html): 
+```VITE_APPWRITE_URL = "testenv"```
+```console.log(import.meta.env.VITE_APPWRITE_URL)```
+
+
+## Appwrite
+can get api key and end point form project setting
+
+create database, make collection, go setting of collection id give the permission of write in database collection (all use-login user) , and set attribe and index >> go to storage and create bucket id eg name images , go to its setting and give the permission for crud
+
+
+* forward reference 
+* use navigate ,use navigation, use sleector 
+
+link : you have to click
+navigate("/") auto go to navigated url page
+
+[Regex](https://regexr.com/)
+
+
+### React hook form
+react hook form is used in text editor
+ setLoader(false)
+
+Controller
 
 
 
@@ -1087,10 +1128,50 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 
 
+----------------------------------------------------------------
+# Production grade
+* to handle .env data make  a conf or config file in src name conf/config then excess all value and export it
+```jsx
+const conf = {
+    appwriteUrl:String(import.meta.env.VITE_APPWRITE_URL),
+    appwriteBucketId:String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
+}
+
+export default conf
+```
+
+vender lockin : make services (here appwrite folder of project)
+
+### when import the output of file :
+ if export by indicating name can use {exportname} if not don't use {} . eg : ```import { Footer, Header } from './components'``` , ```import store from './store/store.js```'
 
 
+### folder name and file name
+folder name in camel case, file name name in camel in only js code present, if jsx use Pacal case. componet folder in pascal case
+
+### component base design
+like make a componet of input field
 
 
+### components/container
+common practice used to organize components based on their role or responsibility within the application architecture and easy to implement design
+
+### return
+if only line of code return can do like this : 
+```jsx
+function Container({children}) {
+  return <div className='w-full max-w-7xl mx-auto px-4'> {children}</div>
+  
+}
+```
+
+### forward reference hook
+
+we make input componet somewhere we use it somewhere, in login page we have two input component, they have 2 diffrent state but compontent will be somewhere state is in login component. to connect input component and state use use it. 
+
+can use when making componet or when export
+
+ref: input.jsx
 
 
 
