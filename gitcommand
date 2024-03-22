@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "porjct complete error dubugging left"
+git commit -m "basic error solve application normally work"
 git push -u origin main
