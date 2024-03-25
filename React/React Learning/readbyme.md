@@ -1119,6 +1119,86 @@ Controller
 
 
 
+--------------------------------------------------------
+# Connect frontend and backend 
+
+
+import express from "express";
+^^^^^
+SyntaxError: Cannot use import statement outside a module
+
+"type":"module",
+  "scripts": {}
+
+### in frontend part
+
+```jsx
+// App.jsx
+mport axios from 'axios'
+
+function App() {
+  const [jokes, setJokes] = useState([])
+  useEffect(() => {
+    axios.get('/api/jokes')
+    .then((response)=>{
+      setJokes(response.data)
+      // console.log(jokes)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }, [])}
+```
+
+```jsx
+// fullstackbasic/frontend/vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  server:{
+    proxy:{
+      '/api':'http://localhost:3000'
+    }
+  }
+  ,
+  plugins: [react()],
+})
+
+```
+Just run the code like normal
+```js
+app.get('/api/jokes',(req,res)=>{
+    const jokes = []
+      res.send(jokes)
+
+})
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

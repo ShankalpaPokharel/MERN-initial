@@ -12,5 +12,5 @@ git push -u origin main
 
 
 git add .
-git commit -m "basic error solve application normally work"
+git commit -m "...."
 git push -u origin main
