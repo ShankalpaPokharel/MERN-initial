@@ -79,10 +79,16 @@ export const Order = mongoose.model("Order",orderSchema)
 
 ## Start with Project
 
+[git ignore generator](https://mrkandreev.name/snippets/gitignore-generator/#Node)
 
+![alt text](<image/Screenshot 2024-03-26 at 7.10.36 PM.png>)
 
+prettier 
 
+npm i prettier
 
+.prettierrc : file to settings of prettier
+.prettierignore: to ingnore file by prettier
 
 
 
