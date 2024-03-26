@@ -1122,7 +1122,7 @@ Controller
 --------------------------------------------------------
 # Connect frontend and backend 
 
-
+![alt text](<zimg/Screenshot 2024-03-25 at 6.51.40 PM Medium.jpeg>)
 import express from "express";
 ^^^^^
 SyntaxError: Cannot use import statement outside a module
