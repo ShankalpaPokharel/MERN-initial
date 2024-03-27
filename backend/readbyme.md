@@ -30,6 +30,9 @@ What are going to store
 what kind of data we are going to data, 
 like fild,  type of data
 
+[Eraser.io](https://app.eraser.io/dashboard/all)
+
+
 ![alt text](<image/Screenshot 2024-03-26 at 11.10.55 AM.png>)
 
 
@@ -83,20 +86,31 @@ export const Order = mongoose.model("Order",orderSchema)
 
 ![alt text](<image/Screenshot 2024-03-26 at 7.10.36 PM.png>)
 
-prettier 
+[prettier](https://www.npmjs.com/package/prettier)
+
 
 npm i prettier
 
 .prettierrc : file to settings of prettier
 .prettierignore: to ingnore file by prettier
 
+![alt text](<image/Screenshot 2024-03-26 at 7.27.07 PM.png>)
 
 
+[Dotenv](https://www.npmjs.com/package/dotenv)
+
+## Database Connection
+
+```npm i mongoose express dotenv```
+
+use try catch ,async and  await
 
 
+cors
+cookie parser
+Node error
 
-
-
+Status code
 
 
 
