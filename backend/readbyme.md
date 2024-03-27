@@ -113,12 +113,16 @@ Node error
 Status code
 
 
+mongoose-aggregate-paginate-v2
+https://www.npmjs.com/package/mongoose-aggregate-paginate-v2
 
 
+npm bcrypt 
+npm jwt
 
+pre , post middleware hook 
 
-
-
+jwt-bearrer token
 
 
 
