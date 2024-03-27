@@ -125,7 +125,9 @@ pre , post middleware hook
 jwt-bearrer token
 
 
+npm install cloudinary
 
+npm i multer
 
 
 
