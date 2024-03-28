@@ -136,9 +136,10 @@ hpyer text transfer Protocal
 
 
 
+access Token : you can access the resourse if you have 
+refresh token : save in database, also give to user, user don't need to login everytime, hit the endpoint ,  will give new access token
 
-
-
+ user.save({validateBeforeSave:false})
 
 
 
