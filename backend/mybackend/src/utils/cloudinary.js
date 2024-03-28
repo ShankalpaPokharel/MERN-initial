@@ -1,33 +1,48 @@
-import {v2 as cloudinary} from 'cloudinary';
-import fs from fs
-          
+import {v2 as cloudinary} from "cloudinary"
+import fs from "fs"
+
+
 cloudinary.config({ 
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
   api_key: process.env.CLOUDINARY_API_KEY, 
   api_secret: process.env.CLOUDINARY_API_SECRET 
 });
 
-const uploaOnCloudinary = async (localFilePath)=>{
+// // Log Cloudinary configuration details
+// console.log("Cloudinary Configuration:");
+// console.log("Cloud Name:", process.env.CLOUDINARY_CLOUD_NAME);
+// console.log("API Key:", process.env.CLOUDINARY_API_KEY);
+// console.log("API Secret:", process.env.CLOUDINARY_API_SECRET);
+
+
+const uploadOnCloudinary = async (localFilePath) => {
     try {
-        if(!localFilePath) return null
-        const response = await cloudinary.uploader.upload(localFilePath,{
-            resource_type:"auto"
+        if (!localFilePath) return null
+        //upload the file on cloudinary
+        const response = await cloudinary.uploader.upload(localFilePath, {
+            resource_type: "auto"
         })
-        console.log(response)
-        console.log("File is uploaded on cloudinar",response.url)
-        return response
+        // file has been uploaded successfull
+        //console.log("file is uploaded on cloudinary ", response.url);
+        fs.unlinkSync(localFilePath)
+        return response;
 
     } catch (error) {
-        fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload opration fail
-        return null
+        console.log(error);
+        fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload operation got failed
+        return null;
     }
 }
 
 
-export {uploaOnCloudinary}
+
+export {uploadOnCloudinary}
 
 
 
+// CLOUDINARY_CLOUD_NAME=dtjwkd6qp
+// CLOUDINARY_API_KEY=493898638353364
+// CLOUDINARY_API_SECRET=sud8aDMIuu3a6sZyeQsvmYl_N8c
 
 
 // cloudinary.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
