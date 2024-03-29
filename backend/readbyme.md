@@ -147,7 +147,7 @@ write a artical about difference between access and refresh token : hashnote
 
 getUserChannelProfile artical aggriatcal pipleline
 
-
+left join in database
 
 
 ```js
