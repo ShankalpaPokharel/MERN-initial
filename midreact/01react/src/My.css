@@ -45,3 +45,15 @@
 .starDev{
     color:red
 }
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    
+  }
+
+  th,td{
+    padding:12px;
+    width:200px
+  }
+  
