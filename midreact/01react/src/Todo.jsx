@@ -9,17 +9,12 @@ function Todo() {
 
     const id = uuid();
 
-    const [isEditable, setIsEditable] = useState(false);
+    const [editId, setEditId] = useState(null);
 
     const [editValue, setEditValue] = useState(todo[0].task);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // const task = e.target.elements.todo.value
-        // console.log(e.target.elements.todo.value)
-
-        // const id = uuid()
-
         setTodo([...todo, { id: id, task: name.task, status: false }]);
         setName({ task: "" });
     };
@@ -39,25 +34,27 @@ function Todo() {
     };
 
     const handleEditSubmit = (el) => {
-        setTodo(prevTodo=> prevTodo.map((taskS)=>{
-            if (taskS.id == el.id){
-                return {...taskS,task:editValue}
-            }
-            return taskS
-        }))
-       
-        setIsEditable(false);
+        setTodo((prevTodo) =>
+            prevTodo.map((taskS) => {
+                if (taskS.id == el.id) {
+                    return { ...taskS, task: editValue };
+                }
+                return taskS;
+            })
+        );
+        setEditId(null)
     };
+   
+    ;
     const handleEdit = (el) => {
-        setIsEditable(!isEditable);
-        
-    };
-    const handleEditOnChange = (e) => {
-        // const [editValue, setEditValue] = useState(el.task);
-        setEditValue(e.target.value);
-        
+        setEditId(el.id);
+        setEditValue(el.task)
 
     };
+  
+    const handleDelete = (el) =>{
+        setTodo(todo.filter(todo => todo.id !== el.id))
+    }
 
     return (
         <>
@@ -86,12 +83,15 @@ function Todo() {
                         <td>{index}</td>
                         {/* <td> {el.task}</td> */}
                         <td>
-                            <input
-                                type="text"
-                                value={isEditable?editValue:el.task}
-                                readOnly={!isEditable}
-                                onChange={(e) =>handleEditOnChange(e,el)}
-                            />
+                            {el.id == editId ? (
+                                <input
+                                    type="text"
+                                    value={editValue}
+                                    onChange={(e)=>setEditValue(e.target.value)}
+                                />
+                            ) : (
+                                el.task
+                            )}
                         </td>
                         <td>
                             <input
@@ -101,15 +101,17 @@ function Todo() {
                             />
                         </td>
                         <td>
-                            {isEditable ? (
-                                <button onClick={()=>handleEditSubmit(el)}>
+                            {el.id == editId ? (
+                                <button onClick={() => handleEditSubmit(el)}>
                                     Submit
                                 </button>
                             ) : (
-                                <button onClick={()=>handleEdit(el)}>Edit</button>
+                                <button onClick={() => handleEdit(el)}>
+                                    Edit
+                                </button>
                             )}
                             {/* <button>Edit</button> */}
-                            <button>Delete</button>
+                            <button onClick={()=>handleDelete(el)}>Delete</button>
                         </td>
                     </tr>
                 ))}

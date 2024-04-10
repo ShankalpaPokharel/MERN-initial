@@ -12,5 +12,6 @@ git push -u origin main
 
 
 git add .
-git commit -m "01react"
+git commit -m "todo added"
 git push -u origin main
+
